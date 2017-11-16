@@ -1,8 +1,37 @@
 import React, { Component } from 'react'
-class BandInputComponent extends Component {
-  render(
-    return(
-      <div>hello</div>
+
+import BandIndex from './band_index_component'
+
+export default class BandInput extends Component {
+  constructor(props) {
+    super(props)
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+  onSubmit(ev) {
+    ev.preventDefault()
+    this.props.store.dispatch({
+      type: 'ADD_BAND',
+      payload: {title: ev.target.children[1].value}
+    })
+  }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.onSubmit}>
+          <label>Enter Band: </label>
+          <input />
+          <button type="submit">Submit</button>
+        </form>
+        <hr/>
+        <h1>Bands</h1>
+        <ul>
+          {
+            this.props.store.getState().map((band, i) =>
+              <BandIndex key={i} band={band} />
+            )
+          }
+        </ul>
+      </div>
     )
-  )
+  }
 }
