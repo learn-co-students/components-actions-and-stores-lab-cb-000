@@ -11,7 +11,12 @@ const store = createStore(bandReducer);
 
 describe('<BandInput />', function () {
   it('should have access to the store', function () {
-    const wrapper = mount(<BandInput />);
+    const wrapper = mount(<BandInput store={store}/>);
+    expect(wrapper.props().store).toNotEqual(undefined, 'The `store` does not exist in props');
+    expect(wrapper.props().store).toBeA('object', 'The `store` is not an object');
+    expect(wrapper.props().store.dispatch).toBeA('function', '`dispatch` is not a function');
+    expect(wrapper.props().store.getState).toBeA('function', '`getState` is not a function');
+    expect(wrapper.props().store.subscribe).toBeA('function', '`subscribe` is not a function');
   });
 
   it('should have an input field', function () {
