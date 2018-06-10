@@ -10,9 +10,6 @@ import bandReducer from '../src/reducers/band_reducer.js';
 const store = createStore(bandReducer);
 
 describe('<BandInput />', function () {
-  it('should have access to the store', function () {
-    const wrapper = mount(<BandInput />);
-  });
 
   it('should have an input field', function () {
     const component = mount(<BandInput store={store} />);
