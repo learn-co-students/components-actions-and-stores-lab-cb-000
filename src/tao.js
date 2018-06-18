@@ -1,8 +1,8 @@
 export default (state=[], action) => {
-    switch (action.type) {
+  switch (action.type) {
     case 'ADD_BAND':
       return [...state, action.payload];
     default:
       return state;
-    }
+  }
 }
