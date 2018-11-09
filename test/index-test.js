@@ -11,7 +11,7 @@ const store = createStore(bandReducer);
 
 describe('<BandInput />', function () {
   it('should have access to the store', function () {
-    const wrapper = mount(<BandInput />);
+    const wrapper = mount(<BandInput store={store}/>);
   });
 
   it('should have an input field', function () {
