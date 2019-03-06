@@ -1,6 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function render(){
-  ReactDOM.render(<InsertTopLevelComponent />, document.getElementById('container'))
+import { createStore } from './store';
+import bandReducer from './reducers/band_reducer'
+import BandInput from './components/band_input_component';
+
+
+const store = createStore(reducer)
+
+const renderApp = () =>{
+  ReactDOM.render(<BandInput store={store} />, document.getElementById('container'))
 }
+
+
+store.subscribe(renderApp);
+store.dispatch({})
