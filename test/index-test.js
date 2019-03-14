@@ -10,6 +10,7 @@ import bandReducer from '../src/reducers/band_reducer.js';
 const store = createStore(bandReducer);
 
 describe('<BandInput />', function () {
+
   it('should have access to the store', function () {
     const wrapper = mount(<BandInput />);
   });
@@ -45,4 +46,5 @@ describe('<BandInput />', function () {
     expect(component.find('ul').childAt(0).length).toEqual(1, 'Bands do not appear on page after `submit`')
     expect(component.props().store.getState()[1].title).toEqual('The Beatles', 'Multiple bands do not appear on page `submit`')
   });
+
 });
